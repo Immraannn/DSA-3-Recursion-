@@ -7,7 +7,7 @@ void printCount(int n) {
         return;
 
     // Recursive call
-    printCount(n - 1);
+    printCount(n - 1);//head recursion
 
     // Print after recursion
     cout << n << " ";
