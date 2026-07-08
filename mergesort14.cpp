@@ -148,3 +148,35 @@ int main() {
 // Writes the smaller element back into the original array.
 // Copies any remaining elements.
 // Deletes the temporary arrays.
+
+// mergeSort(0,5)
+//     ↓
+// mergeSort(0,2)
+//     ↓
+// mergeSort(0,1)
+//     ↓
+// mergeSort(0,0)  ← return
+//     ↓
+// mergeSort(1,1)  ← return
+//     ↓
+// merge(0,1)
+//     ↓
+// mergeSort(2,2)  ← return
+//     ↓
+// merge(0,2)
+//     ↓
+// mergeSort(3,5)
+//     ↓
+// mergeSort(3,4)
+//     ↓
+// mergeSort(3,3)  ← return
+//     ↓
+// mergeSort(4,4)  ← return
+//     ↓
+// merge(3,4)
+//     ↓
+// mergeSort(5,5)  ← return
+//     ↓
+// merge(3,5)
+//     ↓
+// merge(0,5)
