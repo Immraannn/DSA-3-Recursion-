@@ -107,8 +107,8 @@ int main() {
     return 0;
 }
 // Divide(mergesort)
-
-//                  8 4 2 6 1 5 3 7
+     
+//                  8 4 2 6 1 5 3 7                       
 //                /                 \
 //           8 4 2 6              1 5 3 7
 //          /      \             /      \
@@ -135,4 +135,16 @@ int main() {
 
 // 2 4 6 8 + 1 3 5 7
 // ↓
-// 1 2 3 4 5 6 7 8 
+// 1 2 3 4 5 6 7 8
+// mergeSort()
+// Finds the middle of the array.
+// Recursively sorts the left half.
+// Recursively sorts the right half.
+// Calls merge().
+// merge()
+// Creates two temporary arrays.
+// Copies the left and right halves into them.
+// Compares their elements one by one.
+// Writes the smaller element back into the original array.
+// Copies any remaining elements.
+// Deletes the temporary arrays.
