@@ -1,25 +1,12 @@
-#include<iostream> 
-using namespace std;
-
-int power(int n) {
-
-    //base case 
-    if(n == 0)
+double power(int n) {
+    // Base case
+    if (n == 0)
         return 1;
 
-    //recursive relation
-    return 2 * power(n-1);    
+    // Negative power
+    if (n < 0)
+        return 1.0 / power(-n);
+
+    // Recursive case
+    return 2 * power(n - 1);
 }
-
-int main() {
-
-    int n;
-    cin >> n;
-
-    int ans = power(n);
-
-    cout << ans << endl;
-
-    return 0;
-}
-// stack
