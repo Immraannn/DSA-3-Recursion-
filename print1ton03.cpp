@@ -21,3 +21,21 @@ int main() {
 
     return 0;
 }
+
+
+CALLS (Going Down)
+
+printCount(3)
+ └── printCount(2)
+      └── printCount(1)
+           └── printCount(0)  ← Base case
+
+RETURNS (Coming Up)
+
+printCount(0) returns
+        ↑
+printCount(1) prints 1
+        ↑
+printCount(2) prints 2
+        ↑
+printCount(3) prints 3
