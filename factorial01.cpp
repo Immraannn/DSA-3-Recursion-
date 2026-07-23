@@ -1,3 +1,10 @@
+// | Function Return Type          | Recursive Call                               |
+// | ----------------------------- | -------------------------------------------- |
+// | `void`                        | `fun(...);`                                  |
+// | `int`, `bool`, `string`, etc. | `return fun(...);` or use its returned value |
+
+
+
 #include<iostream> 
 using namespace std;
 
