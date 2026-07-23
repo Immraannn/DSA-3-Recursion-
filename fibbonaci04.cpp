@@ -12,6 +12,18 @@ int fibonacci(int n) {
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
+void printSeries(int n, int i = 0) {
+    // Base case
+    if (i == n)
+        return;
+
+    // Print current Fibonacci number
+    cout << fib(i) << " ";
+
+    // Recursive call
+    printSeries(n, i + 1);
+}
+
 int main() {
     int n;
     cin >> n;
