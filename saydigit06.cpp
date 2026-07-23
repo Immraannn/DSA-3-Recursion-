@@ -38,18 +38,35 @@ int main() {
 // 412
 // four one two
 
-// sayDigit(412)
-// │
-// ├── digit = 2
-// │
-// └── sayDigit(41)
-//      │
-//      ├── digit = 1
-//      │
-//      └── sayDigit(4)
-//           │
-//           ├── digit = 4
-//           │
-//           └── sayDigit(0)
-//                 │
-//                 └── return
+
+sayDigit(413)
+
+digit = 3
+n = 41
+        ↓
+sayDigit(41)
+
+digit = 1
+n = 4
+        ↓
+sayDigit(4)
+
+digit = 4
+n = 0
+  
+    //stack unwinding↓
+sayDigit(0)   // Base case
+return
+
+sayDigit(4)
+prints Four
+
+↓
+
+sayDigit(41)
+prints One
+
+↓
+
+sayDigit(413)
+prints Three
