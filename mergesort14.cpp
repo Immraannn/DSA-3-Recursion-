@@ -1,4 +1,4 @@
-class Solution {
+ class Solution {
 public:
     void merge(vector<int>& nums, int s, int mid, int e) {
         vector<int> temp;
