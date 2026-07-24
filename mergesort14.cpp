@@ -1,111 +1,58 @@
-#include <iostream>
-using namespace std;
+class Solution {
+public:
+    void merge(vector<int>& nums, int s, int mid, int e) {
+        vector<int> temp;
 
-// Function to merge two sorted subarrays
-// First subarray: arr[s...mid]
-// Second subarray: arr[mid+1...e]
-void merge(int arr[], int s, int e) {
+        int i = s;
+        int j = mid + 1;
 
-    // Find middle index
-    int mid = s + (e - s) / 2;
-
-    // Length of left subarray
-    int len1 = mid - s + 1;
-
-    // Length of right subarray
-    int len2 = e - mid;
-
-    // Dynamically create temporary arrays
-    int *first = new int[len1];
-    int *second = new int[len2];
-
-    // Copy left part of original array into first[]
-    int mainArrayIndex = s;
-
-    for (int i = 0; i < len1; i++)
-        first[i] = arr[mainArrayIndex++];
-
-    // Reset index to beginning of right half
-    mainArrayIndex = mid + 1;
-
-    // Copy right part into second[]
-    for (int i = 0; i < len2; i++)
-        second[i] = arr[mainArrayIndex++];
-
-    // index1 -> first array
-    // index2 -> second array
-    // mainArrayIndex -> original array
-    int index1 = 0;
-    int index2 = 0;
-
-    // Start writing back from original starting position
-    mainArrayIndex = s;
-
-    // Compare elements of both arrays
-    while (index1 < len1 && index2 < len2) {
-
-        // Put smaller element into original array
-        if (first[index1] < second[index2]) {
-            arr[mainArrayIndex++] = first[index1++];
+        // Merge two sorted halves
+        while (i <= mid && j <= e) {
+            if (nums[i] <= nums[j]) {
+                temp.push_back(nums[i++]);
+            } else {
+                temp.push_back(nums[j++]);
+            }
         }
-        else {
-            arr[mainArrayIndex++] = second[index2++];
+
+        // Copy remaining elements of left half
+        while (i <= mid) {
+            temp.push_back(nums[i++]);
+        }
+
+        // Copy remaining elements of right half
+        while (j <= e) {
+            temp.push_back(nums[j++]);
+        }
+
+        // Copy back to original array
+        for (int k = 0; k < temp.size(); k++) {
+            nums[s + k] = temp[k];
         }
     }
 
-    // Copy remaining elements of first array
-    while (index1 < len1)
-        arr[mainArrayIndex++] = first[index1++];
+    void mergeSort(vector<int>& nums, int s, int e) {
+        // Base case
+        if (s >= e)
+            return;
 
-    // Copy remaining elements of second array
-    while (index2 < len2)
-        arr[mainArrayIndex++] = second[index2++];
+        int mid = s + (e - s) / 2;
 
-    // Free dynamically allocated memory
-    delete[] first;
-    delete[] second;
-}
+        // Sort left half
+        mergeSort(nums, s, mid);
 
-// Recursive Merge Sort function
-void mergeSort(int arr[], int s, int e) {
+        // Sort right half
+        mergeSort(nums, mid + 1, e);
 
-    // Base case
-    // If only one element is present,
-    // it is already sorted.
-    if (s >= e)
-        return;
+        // Merge both halves
+        merge(nums, s, mid, e);
+    }
 
-    // Find middle index
-    int mid = s + (e - s) / 2;
-
-    // Sort left half
-    mergeSort(arr, s, mid);
-
-    // Sort right half
-    mergeSort(arr, mid + 1, e);
-
-    // Merge both sorted halves
-    merge(arr, s, e);
-}
-
-int main() {
-
-    // Unsorted array
-    int arr[] = {8, 4, 2, 6, 1, 5, 3, 7};
-
-    // Calculate size of array
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    // Call Merge Sort
-    mergeSort(arr, 0, n - 1);
-
-    // Print sorted array
-    cout << "Sorted Array: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
-    return 0;
-}
+    vector<int> sortArray(vector<int>& nums) {
+        mergeSort(nums, 0, nums.size() - 1);
+        return nums;
+    }
+};
 // Divide(mergesort)
      
 //                  8 4 2 6 1 5 3 7                       
