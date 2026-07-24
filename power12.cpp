@@ -1,10 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int power(int a, int b) {
+double power(double a, int b) {
     // Base case
     if (b == 0)
         return 1;
+
+    if (b < 0)
+        return 1.0 / power(a, -b);
 
     // Recursive call
     return a * power(a, b - 1);
